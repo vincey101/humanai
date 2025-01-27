@@ -1,0 +1,4 @@
+/* Add any custom styles here */
+.mainContent {
+  transition: margin-left 0.3s ease;
+} 
