@@ -1,10 +1,28 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://humanaiapp.com/api';
+
+
 
 class UserService {
   static async getPlans() {
     return axios.get(`${API_URL}/plans`);
+  }
+
+  static login = async (userData: { email: string; password: string }) => {
+    return axios.post(`${API_URL}/login`, userData);
+  };
+  
+  static register = async (userData: { name:string; email: string; password: string }) => {
+    return axios.post(`${API_URL}/xxx-xxx-auth-register-xxx`, userData);
+  };
+  
+  static persistUserToSession = (user:{})=>{
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }
+
+  static getUserFromSession = ()=>{
+    return JSON.parse(sessionStorage.getItem('user') || '{}');
   }
 
   static async getAgencyUsers() {
